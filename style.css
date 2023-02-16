@@ -192,3 +192,29 @@ Stripe Styles
     grid-template-columns: 1fr;
     justify-items: center;
 }
+
+.hero-center {
+    width: 90vw;
+    max-width: var(--max-width);
+    display: grid;
+    align-items: center;
+}
+
+.hero-info h1{
+    text-transform: none;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.hero-info p {
+    max-width: 35em;
+    line-height: 1.8;
+}
+
+.hero-images {
+    display: none;
+}
+
+/* nav media query */
+
+
