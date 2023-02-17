@@ -8,36 +8,33 @@ const linkBtns = [...document.querySelectorAll(".link-btn")];
 const submenu = document.querySelector(".submenu");
 const hero = document.querySelector(".hero");
 const nav = document.querySelector(".nav");
-// hide/show sidebar
-
-toggleBtn.addEventListener('click', () => {
+// hide/show sideabar
+toggleBtn.addEventListener("click", () => {
   sidebarWrapper.classList.add("show");
 });
-
-closeBtn.addEventListener('click', () => {
+closeBtn.addEventListener("click", () => {
   sidebarWrapper.classList.remove("show");
 });
 
 // set sidebar
-
 sidebar.innerHTML = sublinks
   .map((item) => {
     const { links, page } = item;
-    return `<article>
-        <h4>${page}</h4>
-        <div class="sidebar-sublinks">
-        ${links
-          .map((link) => {
-            return `<a href="${link.url}"><i class="${link.icon}"></i>${link.label}</a>`;
-          })
-          .join('')}
-    </div>
-    </article>`;
+    return `<article >
+<h4>${page}</h4>
+<div class="sidebar-sublinks">
+${links
+  .map((link) => {
+    return `<a href="${link.url}"><i class="${link.icon}"></i>${link.label}</a>`;
   })
-  .join('');
+  .join("")}
+</div>
+</article>`;
+  })
+  .join("");
 
 linkBtns.forEach((btn) => {
-  btn.addEventListener('mouseover', function (e) {
+  btn.addEventListener("mouseover", function (e) {
     const text = e.currentTarget.textContent;
     const tempBtn = e.currentTarget.getBoundingClientRect();
     const center = (tempBtn.left + tempBtn.right) / 2;
@@ -49,7 +46,7 @@ linkBtns.forEach((btn) => {
       submenu.classList.add("show");
       submenu.style.left = `${center}px`;
       submenu.style.top = `${bottom}px`;
-      //OPTIONAL
+      // OPTIONAL
       let columns = "col-2";
       if (links.length === 3) {
         columns = "col-3";
@@ -58,17 +55,17 @@ linkBtns.forEach((btn) => {
         columns = "col-4";
       }
       submenu.innerHTML = `
-                <section>
-                <h4>${page}</h4>
-                <div class="submenu-center ${columns}">
-                ${links
-                  .map((link) => {
-                    return `<a href="${link.url}"><i class="${link.icon}"></i>${link.label}</a>`;
-                  })
-                  .join('')}
-            </div>
-            </section>
-            `;
+      <section> 
+      <h4>${page}</h4>
+      <div class="submenu-center ${columns}">
+      ${links
+        .map((link) => {
+          return `<a href="${link.url}"><i class="${link.icon}"></i>${link.label}</a>`;
+        })
+        .join("")}
+      </div>
+      </section>
+      `;
     }
   });
 });
@@ -76,7 +73,6 @@ linkBtns.forEach((btn) => {
 hero.addEventListener("mouseover", function (e) {
   submenu.classList.remove("show");
 });
-
 nav.addEventListener("mouseover", function (e) {
   if (!e.target.classList.contains("link-btn")) {
     submenu.classList.remove("show");
